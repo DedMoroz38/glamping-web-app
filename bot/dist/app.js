@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const telegraf_1 = require("telegraf");
 const token = process.env.BOT_TOKEN;
-console.log(token);
 const telegram = new telegraf_1.Telegram(token);
 const bot = new telegraf_1.Telegraf(token);
 const chatId = process.env.CHAT_ID;
