@@ -1,4 +1,7 @@
 import {  Markup, Telegraf, Telegram } from 'telegraf';
+import dotenv from "dotenv"
+
+dotenv.config()
 
 const token: string = process.env.BOT_TOKEN as string;
 
