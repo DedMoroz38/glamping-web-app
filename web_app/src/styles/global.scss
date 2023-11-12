@@ -1,1 +1,24 @@
 @import "fonts";
+
+body,
+html,
+main {
+  margin: 0;
+  padding: 0;
+  margin-block: 0;
+  font-family: Jost, sans-serif;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-block: 0;
+}
+
+button {
+  border: none;
+  border-radius: 0;
+  background: none;
+}
