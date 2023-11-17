@@ -1,10 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 import { Main } from "./routes/Main";
+import styled from "styled-components";
 
 export const App = () => {
 
   return  (
-    <Main/>
+    <Container>
+      <Main/>
+    </Container>
     // <Routes>
     //   <Route
     //     path="/*"
@@ -13,3 +16,7 @@ export const App = () => {
     // </Routes>
   )
 }
+
+const Container = styled.div`
+  width: 100vw;
+`

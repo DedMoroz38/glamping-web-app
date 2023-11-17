@@ -5,7 +5,7 @@ export const ContactUs = () => {
 
   return (
     <Wrapper>
-      <h3>СПОСОБЫ СВЯЗИ</h3>
+      {/* <h3>СПОСОБЫ СВЯЗИ</h3> */}
       <ContactIconsWrapper>
         <img src={whatsApp} alt="" />
         <img src={inst} alt="" />
@@ -18,7 +18,7 @@ export const ContactUs = () => {
 
 const Wrapper = styled.div`
   padding: 0 10px;
-  background: black;
+  height: 70px;
   h3 {
     font-size: 18px;
     line-height: 18px;
@@ -28,10 +28,10 @@ const Wrapper = styled.div`
 
 const ContactIconsWrapper = styled.div`
   margin-top: 12px;
-  padding-top: 12px;
+  padding-top: 10px;
   padding-left: 7px;
   display: flex;
-  border-top: 1px solid white;
+  /* border-top: 1px solid white; */
   img {
     margin-right: 25px;
   }

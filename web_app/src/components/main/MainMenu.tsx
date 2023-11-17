@@ -4,7 +4,6 @@ import styled from "styled-components"
 export const MainMenu = () => {
   
   return (
-    <Wrapper>
       <MenuWrapper>
         <MenuItem>
           <img src={brivilageIcon} alt="лого" />
@@ -22,15 +21,11 @@ export const MainMenu = () => {
           <img src={optionArrow} alt="" />
           </MenuItem>
       </MenuWrapper>
-    </Wrapper>
   )
 }
 
-const Wrapper = styled.div`
-  background: black;
-`
-
 const MenuWrapper = styled.div`
+  margin-top: 28px;
   padding: 0 10px;
   display: grid;
   grid-template-columns: 1fr; /* Each block takes an equal fraction of the available width */
@@ -48,11 +43,27 @@ const MenuItem = styled.div`
   display: flex;
   align-items: center;
   padding-left: 14px;
+  &:nth-child(1) {
+    p {
+      margin-left: 14px;
+    }
+  }
+  &:nth-child(2) {
+    padding-left: 18px;
+    p {
+      margin-left: 17px;
+    }
+  }
+  &:nth-child(3) {
+    padding-left: 11px;
+    p {
+      margin-left: 12px;
+    }
+  }
   p {
-    margin-left: 17px;
     font-family: Jost;
     font-size: 24px;
-    font-weight: 500;
+    font-weight: 600;
     color: white;
   }
   img:last-child {
