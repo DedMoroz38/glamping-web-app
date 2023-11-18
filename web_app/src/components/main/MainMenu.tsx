@@ -1,24 +1,48 @@
+import { useEffect, useRef } from "react"
 import { brivilageIcon, locationIson, optionArrow, reviewsIcon } from "../../assets/images"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 
-export const MainMenu = () => {
-  
+type MainMenuProps = {
+  isRouting: boolean
+}
+
+export const MainMenu = ({isRouting}: MainMenuProps) => {
+  const menuItems = useRef<HTMLDivElement[]>([])
+
+  useEffect(() => {
+    const method = isRouting ? 'add' : 'remove';
+    menuItems.current.forEach(item => {
+      item.classList[method]('slideOut')
+    })
+
+  }, [isRouting])
+
+
   return (
       <MenuWrapper>
-        <MenuItem>
+        <MenuItem
+          $toTheLeft={true}
+          ref={(e) => menuItems.current[0] = e!}
+        >
           <img src={brivilageIcon} alt="лого" />
           <MenuItemContainer>
             <p>BRIVILLAGE</p>
             <p>узнайте больше о нас</p>
           </MenuItemContainer>
           <img src={optionArrow} alt="" />
-        </MenuItem>
-        <MenuItem>
+        </MenuItem >
+        <MenuItem
+          $toTheLeft={false}
+          ref={(e) => menuItems.current[1] = e!}
+        >
           <img src={locationIson} alt="местоположенте" />
           <p>Местоположение</p>
           <img src={optionArrow} alt="" />
           </MenuItem>
-        <MenuItem>
+        <MenuItem
+          $toTheLeft={true}
+          ref={(e) => menuItems.current[2] = e!}
+        >
           <img src={reviewsIcon} alt="отзывы" />
           <p>Отзывы</p>
           <img src={optionArrow} alt="" />
@@ -54,7 +78,23 @@ const MenuItemContainer = styled.div`
   }
 `
 
-const MenuItem = styled.div`
+const slideOut = ($toTheLeft: boolean) => keyframes`
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(${$toTheLeft ? '-600px' : '600px'});
+    opacity: 0;
+  }
+`
+
+const MenuItem = styled.div<{$toTheLeft: boolean}>`
+  &.slideOut {
+    animation: ${({ $toTheLeft }) => slideOut($toTheLeft)} 1s;
+    animation-fill-mode: forwards;
+  }
+
   position: relative;
   cursor: pointer;
   border-radius: 10px;

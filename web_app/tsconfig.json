@@ -1,33 +1,25 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "experimentalDecorators": true,
+    "target": "ESNext",
+    "noImplicitAny": true,
+    "alwaysStrict": true,
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
+    "module": "commonjs",
     "jsx": "react-jsx",
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-
-    /* Path */
-    "baseUrl": ".",
-    "paths": {
-      "@src/*": [
-        "src/*"
-      ]
-    }
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "allowJs": true,
+    "checkJs": true,
+    "isolatedModules": true,
+    "outDir": "ts-dist",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "strictNullChecks": true,
+    "typeRoots": ["src/types", "node_modules/@types"],
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
-  "include": ["src"],
+  "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte", "src/**/*.tsx"],
+  "exclude": ["node_modules/*", "__sapper__/*", "public/*"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

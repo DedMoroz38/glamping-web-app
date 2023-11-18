@@ -1,19 +1,36 @@
 import styled from "styled-components"
-import {MainMenu} from '../components/main/MainMenu.tsx'
-import { ContactUs } from "../components/main/ContactUs.tsx"
-import { Header } from "../components/main/Header.tsx"
+import {MainMenu} from '../components/main/MainMenu'
+import { ContactUs } from "../components/main/ContactUs"
+import { Header } from "../components/main/Header"
+import { NextPage } from "../components/NextPage"
+import { mainScreenVM } from "../ViewModels/MainScreenViewModel"
+import { useEffect, useState } from "react"
 
 export const Main = () => {
+  const [isRouting, setIsRouting] = useState(false)
+
+  useEffect(() => {
+    if(!isRouting) return
+    mainScreenVM.scroll()
+  }, [isRouting])
 
   return (
-    <Wrapper>
-      <Header />
-      <BottomWrapper>
-        <MainMenu />
-        <ContactUs />
-        <TransitionBlur />
-      </BottomWrapper>
-    </Wrapper>
+    <>
+      <Wrapper>
+        <Header 
+          setIsRouting={setIsRouting}
+        />
+        <BottomWrapper>
+          <MainMenu
+            isRouting={isRouting}
+          />
+          <ContactUs />
+          <TransitionBlur />
+        </BottomWrapper>
+      </Wrapper>
+      <NextPage />
+    </>
+    
   )
 }
 
@@ -21,7 +38,7 @@ const Wrapper = styled.div`
   margin: 0 auto; 
   display: flex;
   flex-flow: column;
-  `
+`
 
 const BottomWrapper = styled.div`
   position: relative;

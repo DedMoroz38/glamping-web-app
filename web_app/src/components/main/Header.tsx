@@ -1,19 +1,34 @@
 import styled from "styled-components"
-import { mainBgImage, mainHeading } from "../../assets/images"
+import { croppedMainBgImage, mainBgImage, mainHeading } from "../../assets/images"
+import { Dispatch, SetStateAction, useRef } from "react"
 
-export const Header = () => {
-  
+type HeaderProps = {
+  setIsRouting: Dispatch<SetStateAction<boolean>>
+}
+
+export const Header = ({setIsRouting}: HeaderProps) => {  
+  const buttonsWrapperRef = useRef<HTMLDivElement>(null)
+  const headerWrapperRef = useRef<HTMLDivElement>(null)
+
+  const transitionOut = () => {
+    setIsRouting(true)
+    headerWrapperRef?.current?.classList.add('transitionOut')
+    buttonsWrapperRef?.current?.classList.add('transitionOut')
+  }
 
   return (
     <Wrapper>
-      <HeaderWrapper>
+      <HeaderWrapper ref={headerWrapperRef}>
         <h2>GLAMPING RESORT</h2>
         <img src={mainHeading} alt="" />
       </HeaderWrapper>
-      <ButtonsWrapper>
-        <button>ЗАБРОНИРОВАТЬ ДОМИК</button>
+      <ButtonsWrapper
+        ref={buttonsWrapperRef}
+      >
+        <button onClick={() => transitionOut()}>ЗАБРОНИРОВАТЬ ДОМИК</button>
         <button>УСЛУГИ BRIVILLAGE</button>
       </ButtonsWrapper>
+      <CroppedBgImage src={croppedMainBgImage} alt="" />
     </Wrapper>
   )
 }
@@ -22,9 +37,8 @@ const Wrapper = styled.div`
   position: relative;
   padding-top: 74px;
   height: 550px;
-  background-image: url(${mainBgImage});
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background: url(${mainBgImage}) no-repeat top center;
+  background-size: 100% auto;
 `
 
 const HeaderWrapper = styled.div`
@@ -34,6 +48,7 @@ const HeaderWrapper = styled.div`
   width: fit-content;
   align-items: center;
   color: black;
+  position: relative;
   
   h2 {
     font-size: 20px;
@@ -44,6 +59,12 @@ const HeaderWrapper = styled.div`
   img {
     width: 90vw;
   }
+`
+
+const CroppedBgImage = styled.img`
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
 `
 
 const ButtonsWrapper = styled.div`
@@ -78,4 +99,5 @@ const ButtonsWrapper = styled.div`
       width: 220px;
     }
   }
+
 `

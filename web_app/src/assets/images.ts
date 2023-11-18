@@ -1,5 +1,5 @@
 import mainBgImage from './img/mainBgImage.png'
-import mainHeading from './img/mainHeading.svg'
+import mainHeading from './img/mainHeading.png'
 import optionArrow from './img/optionArrow.svg'
 import brivilageIcon from './img/brivilageIcon.svg'
 import locationIson from './img/locationIson.svg'
@@ -8,6 +8,7 @@ import inst from './img/inst.svg'
 import whatsApp from './img/whatsApp.svg'
 import phone from './img/phone.svg'
 import email from './img/email.svg'
+import croppedMainBgImage from './img/croppedMainBgImage.png' 
 
 export {
   mainBgImage,
@@ -20,4 +21,5 @@ export {
   whatsApp,
   phone,
   email,
+  croppedMainBgImage
 }
