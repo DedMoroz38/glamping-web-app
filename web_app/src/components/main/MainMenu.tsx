@@ -7,7 +7,10 @@ export const MainMenu = () => {
       <MenuWrapper>
         <MenuItem>
           <img src={brivilageIcon} alt="лого" />
-          <p>Отзывы</p>
+          <MenuItemContainer>
+            <p>BRIVILLAGE</p>
+            <p>узнайте больше о нас</p>
+          </MenuItemContainer>
           <img src={optionArrow} alt="" />
         </MenuItem>
         <MenuItem>
@@ -25,13 +28,31 @@ export const MainMenu = () => {
 }
 
 const MenuWrapper = styled.div`
-  margin-top: 28px;
+  margin-top: 57px;
   padding: 0 10px;
   display: grid;
-  grid-template-columns: 1fr; /* Each block takes an equal fraction of the available width */
+  grid-template-columns: 1fr; 
   grid-template-rows: repeat(3, 60px);
   row-gap: 6px;
-  `
+`
+
+const MenuItemContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  p:nth-child(1){
+    font-family: KyivType;
+    font-size: 22px;
+    font-weight: 350;
+    line-height: 22px;
+  }
+  p:nth-child(2){
+    padding-left: 3px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+  }
+`
 
 const MenuItem = styled.div`
   position: relative;
@@ -73,4 +94,5 @@ const MenuItem = styled.div`
     top: 50%;
   }
 `
+
 
